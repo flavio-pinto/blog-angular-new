@@ -14,6 +14,7 @@ import { PostDetailsPage } from './pages/post-details.page';
 import { UsersPage } from './pages/users.page';
 import { UsersDetailsPage } from './pages/users-details.page';
 import { GuardiaGuard } from './guardia.guard';
+import { NuovoUtentePage } from './pages/nuovo-utente.page';
 
 const routes:Route[] = [
   {
@@ -49,6 +50,10 @@ const routes:Route[] = [
     ]
   },
   {
+    path:"nuovo-utente",
+    component:NuovoUtentePage
+  },
+  {
     path:"**",
     redirectTo:""
   }
@@ -66,7 +71,8 @@ const routes:Route[] = [
     HighlightDirective,
     PostDetailsPage,
     UsersPage,
-    UsersDetailsPage
+    UsersDetailsPage,
+    NuovoUtentePage
   ],
   imports: [
     BrowserModule,

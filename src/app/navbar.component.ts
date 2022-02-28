@@ -54,6 +54,14 @@ import { GuardiaService } from './guardia.service';
                 >Users</a
               >
             </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                [routerLink]="['/nuovo-utente']"
+                routerLinkActive="active"
+                >Nuovo Utente</a
+              >
+            </li>
           </ul>
         </div>
         <div class="button-wrapper">
