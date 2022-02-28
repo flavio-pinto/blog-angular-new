@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Route, RouterModule } from '@angular/router';
+import { PreloadAllModules, Route, RouterModule } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
@@ -79,7 +79,7 @@ const routes:Route[] = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})
   ],
   providers: [],
   bootstrap: [AppComponent]
