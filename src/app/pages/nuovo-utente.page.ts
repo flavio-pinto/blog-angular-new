@@ -3,18 +3,26 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   template: `
     <label for="nome">Nome</label>
-    <input type="text" id="nome" required>
+    <input (change)="canEdit = true" type="text" id="nome" required>
 
     <label for="email">Email</label>
-    <input type="email" id="email" required>
+    <input (change)="canEdit = true" type="email" id="email" required>
   `,
   styles: [
   ]
 })
 export class NuovoUtentePage implements OnInit {
-
+  canEdit: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onDeactivate() {
+    if(!this.canEdit) {
+      return true;
+    }
+
+    return confirm('Sei sicuro di voler annullare le modifiche?');
   }
 }

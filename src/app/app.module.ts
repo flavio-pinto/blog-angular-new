@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Route, RouterModule } from '@angular/router';
 
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar.component';
 import { HomePage } from './pages/home.page';
@@ -15,6 +16,7 @@ import { UsersPage } from './pages/users.page';
 import { UsersDetailsPage } from './pages/users-details.page';
 import { GuardiaGuard } from './guardia.guard';
 import { NuovoUtentePage } from './pages/nuovo-utente.page';
+import { DeactivateGuard } from './deactivate.guard';
 
 const routes:Route[] = [
   {
@@ -51,7 +53,8 @@ const routes:Route[] = [
   },
   {
     path:"nuovo-utente",
-    component:NuovoUtentePage
+    component:NuovoUtentePage,
+    canDeactivate:[DeactivateGuard]
   },
   {
     path:"**",
