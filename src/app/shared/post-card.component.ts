@@ -20,7 +20,7 @@ import { Post } from '../models/post';
           {{ post.body }}
         </p>
         <ng-content></ng-content>
-        
+
       </div>
     </div>
   `,

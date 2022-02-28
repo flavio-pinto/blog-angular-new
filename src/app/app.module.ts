@@ -8,8 +8,6 @@ import { NavbarComponent } from './navbar.component';
 import { HomePage } from './pages/home.page';
 import { ActivePostsPage } from './pages/active-posts.page';
 import { InactivePostsPage } from './pages/inactive-posts.page';
-import { PostCardComponent } from './components/post-card.component';
-import { MaiuscoloPipe } from './pipes/maiuscolo.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
 import { PostDetailsPage } from './pages/post-details.page';
 import { UsersPage } from './pages/users.page';
@@ -17,6 +15,7 @@ import { UsersDetailsPage } from './pages/users-details.page';
 import { GuardiaGuard } from './guardia.guard';
 import { NuovoUtentePage } from './pages/nuovo-utente.page';
 import { DeactivateGuard } from './deactivate.guard';
+import { SharedModule } from './shared/shared.module';
 
 const routes:Route[] = [
   {
@@ -56,6 +55,7 @@ const routes:Route[] = [
     component:NuovoUtentePage,
     canDeactivate:[DeactivateGuard]
   },
+  { path: 'shared', loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule) },
   {
     path:"**",
     redirectTo:""
@@ -69,8 +69,6 @@ const routes:Route[] = [
     HomePage,
     ActivePostsPage,
     InactivePostsPage,
-    PostCardComponent,
-    MaiuscoloPipe,
     HighlightDirective,
     PostDetailsPage,
     UsersPage,
@@ -79,6 +77,7 @@ const routes:Route[] = [
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})
   ],
   providers: [],
