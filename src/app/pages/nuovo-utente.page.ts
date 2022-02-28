@@ -2,14 +2,22 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   template: `
-    <label for="nome">Nome</label>
-    <input (change)="canEdit = true" type="text" id="nome" required>
-
-    <label for="email">Email</label>
-    <input (change)="canEdit = true" type="email" id="email" required>
+    <form id="form" class="text-center rounded">
+      <label for="nome">Nome</label>
+      <input class="form-control" (change)="canEdit = true" type="text" id="nome" required>
+      <label for="email">Email</label>
+      <input class="form-control" (change)="canEdit = true" type="email" id="email" required>
+    </form>
   `,
-  styles: [
-  ]
+  styles: [`
+    #form {
+      width: 30em;
+      margin: 0 auto;
+      background-color: black;
+      padding: 3em;
+      color: white;
+    }
+    `]
 })
 export class NuovoUtentePage implements OnInit {
   canEdit: boolean = false;
