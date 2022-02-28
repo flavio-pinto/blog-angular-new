@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
+  CanActivateChild,
   Router,
   RouterStateSnapshot,
   UrlTree,
@@ -12,7 +13,7 @@ import { GuardiaService } from './guardia.service';
 @Injectable({
   providedIn: 'root',
 })
-export class GuardiaGuard implements CanActivate{
+export class GuardiaGuard implements CanActivate, CanActivateChild {
   constructor(private guardiaSrv: GuardiaService, private router: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -31,6 +32,19 @@ export class GuardiaGuard implements CanActivate{
       this.router.navigate(['/']);
       return false;
     });
+  }
+
+  canActivateChild(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
+
+
+    return this.canActivate(route, state)
   }
 }
 

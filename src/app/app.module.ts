@@ -40,10 +40,10 @@ const routes:Route[] = [
   {
     path:"users",
     component:UsersPage,
+    canActivateChild:[GuardiaGuard],
     children:[
       {
         path:":id",
-        canActivate:[GuardiaGuard],
         component:UsersDetailsPage
       }
     ]

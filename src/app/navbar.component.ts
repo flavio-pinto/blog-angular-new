@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GuardiaService } from './guardia.service';
 
 @Component({
   selector: 'app-navbar',
@@ -55,13 +56,28 @@ import { Component, OnInit } from '@angular/core';
             </li>
           </ul>
         </div>
+        <div class="button-wrapper">
+          <button class="btn btn-success m-2" (click)="onLogIn()">LogIn</button>
+          <button class="btn btn-danger" (click)="onLogOut()">LogOut</button>
+        </div>
       </div>
     </nav>
   `,
-  styles: [],
+  styles: [`
+    .button-wrapper {
+      margin-left: auto;
+    }
+  `],
 })
 export class NavbarComponent implements OnInit {
-  constructor() {}
-
+  constructor(private guardiaSrv: GuardiaService) {}
   ngOnInit(): void {}
+
+  onLogIn(){
+    this.guardiaSrv.logIn();
+  }
+
+  onLogOut(){
+    this.guardiaSrv.logOut();
+  }
 }
